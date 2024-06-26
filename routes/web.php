@@ -29,7 +29,7 @@ Route::get('/posts', function () {
     ]]);
 });
 
-Route::get('/posts/{id}', function($id) {
+Route::get('/posts/{slug}', function($slug) {
     $posts = [
         [
             'id' => 1,
@@ -47,8 +47,8 @@ Route::get('/posts/{id}', function($id) {
         ]
         ];
 
-        $post = Arr::first($posts, function($post) use ($id) {
-            return $post['id'] == $id;
+        $post = Arr::first($posts, function($post) use ($slug) {
+            return $post['slug'] == $slug;
         });
 
         return view('post', ['title' => 'Single Post', 'post' => $post]);
