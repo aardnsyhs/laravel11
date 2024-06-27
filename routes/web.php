@@ -15,7 +15,7 @@ Route::get('/posts/{post:slug}', function(Post $post) {
         return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
 
-Route::get('/authors/{user}', function(User $user) {
+Route::get('/authors/{user:username}', function(User $user) {
     return view('posts', ['title' => 'Article by ' . $user->name, 'posts' => $user->posts]);
 });
 
