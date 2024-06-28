@@ -9,11 +9,11 @@ Route::get('/', function () {
     return view('home', ['title' => 'Home Page']);
 });
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog Page', 'posts' => Post::with(['author', 'category'])->latest()->get()]);
+    return view('posts', ['title' => 'Blog Page', 'posts' => Post::search(request(['search', 'category', 'author']))->latest()->get()]);
 });
 
 Route::get('/posts/{post:slug}', function(Post $post) {
-        return view('post', ['title' => 'Single Post', 'post' => $post]);
+    return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
 
 Route::get('/authors/{user:username}', function(User $user) {
